@@ -45,7 +45,10 @@ def guessing_game():
         #user prompted to guess a number
         user_guess = int(input(f"Pick a whole number between {minimum} and {maximum}. "))
         
-        if user_guess > secret_number: 
+        if user_guess > maximum or user_guess < minimum:
+            print(f"Please pick a number between {minimum} and {maximum}.") 
+
+        elif user_guess > secret_number: 
             num_guesses += 1 #put attempt counter up
             remaining += -1 #subtract from remaining attempts
             if remaining < 1: #checks to see if user has attempts left
@@ -59,8 +62,8 @@ def guessing_game():
             if remaining < 1: 
                 print(f"You lose. The secret number was {secret_number}, better luck next time.")
                 break 
-            print(f"Too low, try again. You have {remaining} attempt(s) left.") 
-
+            print(f"Too low, try again. You have {remaining} attempt(s) left.")
+       
         else: 
             print(f"That's right! The secret number is {secret_number}. You got it in {num_guesses + 1} attempt(s).") #displays secret number and attempts
             break #stops program because user has won
