@@ -43,7 +43,7 @@ def guessing_game():
 
     while True:
         #user prompted to guess a number
-        user_guess = (input(f"Pick a whole number between {minimum} and {maximum}. "))
+        user_guess = (input(f"Pick a whole number between {minimum} and {maximum}.\n"))
         try:
             user_guess_int = int(user_guess)
         except ValueError:
