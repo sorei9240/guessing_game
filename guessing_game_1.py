@@ -49,7 +49,7 @@ def guessing_game():
             num_guesses += 1 #put attempt counter up
             remaining += -1 #subtract from remaining attempts
             if remaining < 1: #checks to see if user has attempts left
-                print(f"You lose the number was {secret_number}, better luck next time.")
+                print(f"You lose. The secret number was {secret_number}, better luck next time.")
                 break #stops program because user has no remaining attempts
             print(f"Too high, try again. You have {remaining} attempt(s) left.") 
 
@@ -57,7 +57,7 @@ def guessing_game():
             num_guesses += 1 
             remaining += -1 
             if remaining < 1: 
-                print(f"You lose the number was {secret_number}, better luck next time.")
+                print(f"You lose. The secret number was {secret_number}, better luck next time.")
                 break 
             print(f"Too low, try again. You have {remaining} attempt(s) left.") 
 
