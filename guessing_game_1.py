@@ -1,6 +1,24 @@
 #import random module
 import random
-#define guessing game function
+
+with open("scoreboard.txt", "a") as file:
+    pass
+def update_scoreboard():
+    with open("scoreboard.txt", "a") as file:
+        file.write(f"Level: {level}, Attempts: {num_guesses}\n")
+def display_scoreboard():
+    try:
+        with open("scoreboard.txt", "r") as file:
+            scoreboard = file.readlines()
+            if not scoreboard:
+                print("No scores yet.")
+            else:
+                print("===== Scoreboard =====")
+                for score in scoreboard:
+                    print(score.strip())
+    except FileNotFoundError:
+        print("No scores yet.")
+
 def guessing_game():
     print("Welcome to the number guessing game! You have four difficulty levels to choose from:")
     print("Easy gives you 10 attempts to guess a number between 1 and 50.")
@@ -9,6 +27,7 @@ def guessing_game():
     print("Impossible gives you 1 attempt to guess a number between 1 and 100.")
     
     while True:
+        global level
         level = input("Please type easy, medium, hard or impossible to select your difficulty level:\n").lower()
         if level == "easy":
             print("Going with the safe choice. Okay.")
@@ -36,7 +55,8 @@ def guessing_game():
             break
         else:
             print("invalid input")
-        
+    
+    global num_guesses    
     num_guesses = 0 #counter variable for attempts
     remaining = max_guesses #counter variable for remaining attempts
     secret_number = random.randint(minimum, maximum) #generates secret number
@@ -71,6 +91,7 @@ def guessing_game():
        
         else: 
             print(f"That's right! The secret number is {secret_number}. You got it in {num_guesses + 1} attempt(s).") #displays secret number and attempts
+            update_scoreboard()
             break #stops program because user has won
 
 guessing_game()
@@ -81,8 +102,15 @@ def play_again():
         if replay == "yes":
             guessing_game()
         elif replay == "no":
-            print("Thanks for playing, see you next time!")
-            break
+            see_scores = input("Would you like to view the scoreboard? (yes/no)\n").lower()
+            if see_scores == "yes":
+                display_scoreboard()
+                break
+            elif see_scores != "yes":
+                print("Thanks for playing, see you next time!")
+                break
         else:
             print("Invalid input, please type yes or no.")
 play_again()
+
+
