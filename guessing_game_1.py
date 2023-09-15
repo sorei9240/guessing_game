@@ -9,7 +9,7 @@ def guessing_game():
     print("Impossible gives you 1 attempt to guess a number between 1 and 100.")
     
     while True:
-        level = input("Please type easy, medium, hard or impossible to select your difficulty level: ").lower()
+        level = input("Please type easy, medium, hard or impossible to select your difficulty level:\n").lower()
         if level == "easy":
             print("Going with the safe choice. Okay.")
             maximum = 50
@@ -77,7 +77,7 @@ guessing_game()
 
 def play_again():
     while True:
-        replay = input("Would you like to play again? (yes/no) ").lower()
+        replay = input("Would you like to play again? (yes/no)\n").lower()
         if replay == "yes":
             guessing_game()
         elif replay == "no":
