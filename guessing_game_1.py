@@ -89,8 +89,9 @@ def guessing_game():
                 break 
             print(f"Too low, try again. You have {remaining} attempt(s) left.")
        
-        else: 
-            print(f"That's right! The secret number is {secret_number}. You got it in {num_guesses + 1} attempt(s).") #displays secret number and attempts
+        else:
+            num_guesses += 1 
+            print(f"That's right! The secret number is {secret_number}. You got it in {num_guesses} attempt(s).") #displays secret number and attempts
             update_scoreboard()
             break #stops program because user has won
 
