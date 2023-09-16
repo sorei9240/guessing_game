@@ -100,7 +100,12 @@ def play_again():
     while True:
         replay = input("Would you like to play again? (yes/no)\n").lower()
         if replay == "yes":
-            guessing_game()
+            view_scores = input("Would you like to view the scoreboard? (yes/no)\n").lower()
+            if view_scores == "yes":
+                display_scoreboard()
+                guessing_game()
+            elif view_scores != "yes":
+                guessing_game()
         elif replay == "no":
             see_scores = input("Would you like to view the scoreboard? (yes/no)\n").lower()
             if see_scores == "yes":
